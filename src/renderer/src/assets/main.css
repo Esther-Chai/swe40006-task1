@@ -1,0 +1,158 @@
+@import './base.css';
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #2c1a0e;
+  user-select: none;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  background-color: #3e2010;
+  border-radius: 16px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.display {
+  background-color: #1e0f05;
+  color: #f5deb3;
+  text-align: right;
+  padding: 12px 20px 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.expression {
+  font-size: 16px;
+  color: #a07850;
+  min-height: 20px;
+  word-break: break-all;
+}
+
+.main-display {
+  font-size: 36px;
+  word-break: break-all;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  flex: 1;
+  height: 56px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #6b3a1f;
+  color: #f5deb3;
+  transition: background-color 0.15s;
+}
+
+.btn:hover {
+  background-color: #7d4a2a;
+}
+
+.btn:active {
+  background-color: #5a2e10;
+}
+
+.btn-function {
+  background-color: #8b5e3c;
+  color: #fff8f0;
+}
+
+.btn-function:hover {
+  background-color: #9e6e4a;
+}
+
+.btn-operator {
+  background-color: #c0622a;
+  color: #fff;
+}
+
+.btn-operator:hover {
+  background-color: #d4733a;
+}
+
+.btn-zero {
+  flex: 2.2;
+}
+
+.app-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.history {
+  background-color: #3e2010;
+  border-radius: 16px;
+  padding: 16px;
+  width: 220px;
+  max-height: 460px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.history-title {
+  color: #f5deb3;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  background-color: #2c1a0e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.history-expr {
+  color: #a07850;
+  font-size: 13px;
+}
+
+.history-result {
+  color: #f5deb3;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.history-time {
+  color: #6b4226;
+  font-size: 11px;
+}
