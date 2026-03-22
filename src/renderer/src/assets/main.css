@@ -98,6 +98,13 @@ body {
   flex: 2.2;
 }
 
+.app-version {
+  text-align: center;
+  color: #a07850;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
 .app-wrapper {
   display: flex;
   align-items: flex-start;

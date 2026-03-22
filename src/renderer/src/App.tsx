@@ -117,6 +117,7 @@ function App(): React.JSX.Element {
   return (
     <div className="app-wrapper">
       <div className="calculator">
+        <div className="app-version">v1.1.0</div>
         <Display expression={liveExpression} value={display} />
         <ButtonGrid onButton={handleButton} />
       </div>

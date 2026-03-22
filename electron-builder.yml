@@ -3,6 +3,7 @@ productName: Task-1-Calculator
 icon: resources/icon-calculator.png
 directories:
   buildResources: build
+  output: release/${version}
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -27,8 +28,6 @@ nsis:
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
-directories:
-  output: release/${version}
 mac:
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:
@@ -50,7 +49,8 @@ appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
 publish:
-  provider: generic
-  url: https://example.com/auto-updates
+  provider: github
+  owner: Esther-Chai
+  repo: swe40006-task1
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/

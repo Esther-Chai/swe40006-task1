@@ -1,7 +1,40 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { autoUpdater } from 'electron-updater'
 import icon from '../../resources/icon-calculator.png?asset'
+
+function setupAutoUpdater(mainWindow: BrowserWindow): void {
+  autoUpdater.autoDownload = true
+  autoUpdater.autoInstallOnAppQuit = true
+
+  autoUpdater.on('update-available', (info) => {
+    dialog.showMessageBox(mainWindow, {
+      type: 'info',
+      title: 'Update Available',
+      message: `Version ${info.version} is available and is being downloaded.`
+    })
+  })
+
+  autoUpdater.on('update-downloaded', () => {
+    dialog
+      .showMessageBox(mainWindow, {
+        type: 'question',
+        title: 'Update Ready',
+        message: 'Update downloaded. Restart now to install?',
+        buttons: ['Restart', 'Later']
+      })
+      .then(({ response }) => {
+        if (response === 0) autoUpdater.quitAndInstall()
+      })
+  })
+
+  autoUpdater.on('error', (err) => {
+    console.error('Auto updater error:', err)
+  })
+
+  autoUpdater.checkForUpdates()
+}
 
 function createWindow(): void {
   // Create the browser window.
@@ -53,6 +86,9 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
+
+  const win = BrowserWindow.getAllWindows()[0]
+  if (!is.dev) setupAutoUpdater(win)
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
